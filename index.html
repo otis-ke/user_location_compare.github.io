@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <style>
+  input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  #output {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  #locationOutput {
+  width: 400px;
+  height: auto;
+  min-height: 100px;
+  max-height: 400px;
+  resize: none;
+  overflow: auto;
+  font-size: 16px;
+}
+#location {
+  width: 400px;
+  height: auto;
+  min-height: 100px;
+  max-height: 400px;
+  resize: none;
+  overflow: auto;
+  font-size: 16px;
+}
+#userInput {
+  width: 400px;
+  height: auto;
+  min-height: 100px;
+  max-height: 400px;
+  resize: none;
+  overflow: auto;
+  font-size: 16px;
+}
+body {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+button {
+  border: none;
+  color: white;
+  background-color: #633eb9;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+  color: #f6edf7;
+  background-color:#ff9900;
+}
+
+textarea {
+			padding: 10px;
+			border-radius: 10px;
+			border: 2px solid #ddd;
+			box-shadow: 0 0 5px rgba(0,0,0,0.1);
+			font-size: 18px;
+			resize: none;
+			width: 400px;
+			height: 150px;
+			margin-bottom: 20px;
+			background-color: #fff;
+			color: #555;
+			font-weight: bold;
+		}
+
+
+      
+footer {
+  color:#ffff00 ;
+  text-align: center  ;
+  position: relative;
+  background-color: #633eb9;
+  }
+
+
+
+
+
+
+/**************************/
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #fff;
+      color: #000;
+      padding: 10px;
+    }
+  
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+  
+    .mode-toggle {
+      display: flex;
+      align-items: center;
+    }
+  
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+      margin-right: 10px;
+    }
+  
+    .switch input { 
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+  
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+      border-radius: 24px;
+    }
+  
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 4px;
+      bottom: 4px;
+      background-color: #fff;
+      -webkit-transition: .4s;
+      transition: .4s;
+      border-radius: 50%;
+    }
+  
+    input:checked + .slider {
+      background-color: #2196F3;
+    }
+  
+    input:checked + .slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
+  
+    .slider.round {
+      border-radius: 34px;
+    }
+  
+    .slider.round:before {
+      border-radius: 50%;
+    }
+  
+    .mode-label {
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+
+
+    .dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+p.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color:#ffff00; /* Set the desired text color */
+  text-shadow: #8b16da;
+  align-self: center;
+  margin: 0; /* Remove any default margin */
+}
+
+header {
+  align-items: center;
+  text-align: center;
+  position: relative;
+  background-color: #633eb9;
+  }
+  .icon-container i {
+  margin-right: 10px; /* Add right margin to create space between icons */
+}
+
+
+
+#footer_items {
+  text-align: center;
+  font-size: 14px;
+  color:#ffff00; ;
+  margin-top: 20px;
+}
+
+#footer_items p {
+  margin: 0;
+}
+
+#footer_items a {
+  text-decoration: none;
+  color:#00ffff;
+  outline: none;
+}
+
+#footer_items a:hover {
+  color:#ff9900 ;
+}
+
+
+    
+    /*****************************************************/
+
+/* Default styles */
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+
+
+@media screen and (max-width: 400px) {
+  /* Styles for screen resolution up to 400px */
+  input[type="text"],
+  #output,
+  #locationOutput,
+  #location,
+  #userInput {
+    width: 70%;
+    font-size: 14px;
+  }
+
+  textarea {
+    width: 100%;
+    height: 100px;
+    font-size: 14px;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  footer {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  /* Styles for screen resolution up to 600px */
+  input[type="text"],
+  #output,
+  #locationOutput,
+  #location,
+  #userInput {
+    width: 70%;
+    font-size: 14px;
+  }
+
+  textarea {
+    width: 100%;
+    height: 100px;
+    font-size: 14px;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  footer {
+    font-size: 12px;
+  }
+}
+
+
+
+
+
+  </style>
+
+    <title>location</title>
+</head>
+
+<body>
+    <div>
+        <header>
+            <div id="header_space">
+            <br>
+            </div>
+            <p class="logo"><i class="ri-global-fill"></i> MY LOCATION</p>
+            <!-- Rest of the header content -->
+            <div class="mode-toggle">
+                
+                <div class="icon-container">
+                    
+                    <i class="ri-sun-line"></i>
+                  </div>
+                  
+                
+                <label class="switch">
+                  <input type="checkbox" id="dark-mode-toggle"  size="30px ">
+                  <span class="slider round"></span>
+                </label>
+                <span class="mode-label"></span>
+                <div class="icon-container">
+                    <i class="ri-moon-fill"></i>
+                    
+                  </div>
+              </div>
+          </header>
+      
+      <br>
+      <br>
+       
+    <div>
+   <textarea id="location" readonly></textarea>
+
+    <button onclick="getLocation()">Show GPS location</button>
+   
+   </div>
+    <br>
+   <div>
+    <textarea id="locationOutput" readonly></textarea>
+     <button id="myButton">show my address</button>
+   </div>
+   <i class="ri-arrow-up-fill"></i> <i class="ri-arrow-down-fill"></i>
+   <br> 
+   <div>
+    
+    <textarea id="userInput" placeholder="type your current location to Compare with the address above "></textarea>
+  <button id="compareButton">Compare my address</button>
+   </div>
+  
+<footer>
+   <div id="footer_items">
+    <br>
+    <p>copyright © location 2023 </p> 
+    <br>
+    <a  href="https://otis-ke.github.io/otiswebsite.github.io/"><bold>otis-ke</bold></a> 
+    <br>
+
+ </div>
+</footer>
+ </div>
+</body>
+<script>
+    function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    alert("Geolocation is not supported by this browser.");
+  }
+}
+
+function showPosition(position) {
+  var latitude = position.coords.latitude;
+  var longitude = position.coords.longitude;
+  document.getElementById("location").value = "Latitude: " + latitude + ", Longitude: " + longitude;
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+
+const button = document.getElementById('myButton');
+const locationOutput = document.getElementById('locationOutput');
+
+button.addEventListener('click', () => {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(onSuccess, onError);
+  } else {
+    locationOutput.value = "Your browser does not support geolocation";
+  }
+});
+
+function onSuccess(position) {
+  const latitude = position.coords.latitude;
+  const longitude = position.coords.longitude;
+
+  fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}`)
+    .then(response => response.json())
+    .then(data => {
+      const locationName = data.display_name;
+      locationOutput.value = `Your location: ${locationName}`;
+    })
+    .catch(error => {
+      console.error(error);
+      locationOutput.value = `Error getting location name`;
+    });
+}
+
+function onError(error) {
+  if (error.code == 1) {
+    locationOutput.value = "You denied the request";
+  } else if (error.code == 2) {
+    locationOutput.value = "Location information is unavailable";
+  } else if (error.code == 3) {
+    locationOutput.value = "The request timed out";
+  } else {
+    locationOutput.value = "An unknown error occurred";
+  }
+}
+//////////////////////////////
+const compareButton = document.getElementById('compareButton');
+const userInput = document.getElementById('userInput');
+
+compareButton.addEventListener('click', () => {
+  const outputValue = locationOutput.value.trim().toLowerCase();
+  const inputValue = userInput.value.trim().toLowerCase();
+
+  if (inputValue === '') {
+    compareButton.textContent = 'Input address, please';
+    compareButton.style.backgroundColor = '#633eb9'; // Reset button color
+  } else if (outputValue.includes(inputValue)) {
+    compareButton.textContent = 'Location confirmed';
+    compareButton.style.backgroundColor = 'green';
+  } else {
+    compareButton.textContent = 'The location does not match';
+    compareButton.style.backgroundColor = 'red';
+  }
+});
+
+
+///////////////////////////////////////////////
+const darkModeToggle = document.getElementById('dark-mode-toggle');
+const body = document.body;
+
+darkModeToggle.addEventListener('change', () => {
+  if (darkModeToggle.checked) {
+    body.classList.add('dark-mode');
+  } else {
+    body.classList.remove('dark-mode');
+  }
+});
+
+
+</script>
+</html>
