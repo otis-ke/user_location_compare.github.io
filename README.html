@@ -3,63 +3,322 @@
 <head>
   <title>Website with GPS Coordinates and Address Conversion</title>
   <style>
-    /* CSS styles */
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      max-width: 600px;
-      margin: 0 auto;
+  input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  #output {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  #locationOutput {
+  width: 400px;
+  height: auto;
+  min-height: 100px;
+  max-height: 400px;
+  resize: none;
+  overflow: auto;
+  font-size: 16px;
+}
+#location {
+  width: 400px;
+  height: auto;
+  min-height: 100px;
+  max-height: 400px;
+  resize: none;
+  overflow: auto;
+  font-size: 16px;
+}
+#userInput {
+  width: 400px;
+  height: auto;
+  min-height: 100px;
+  max-height: 400px;
+  resize: none;
+  overflow: auto;
+  font-size: 16px;
+}
+body {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+button {
+  border: none;
+  color: white;
+  background-color: #633eb9;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+  color: #f6edf7;
+  background-color:#ff9900;
+}
+
+textarea {
+			padding: 10px;
+			border-radius: 10px;
+			border: 2px solid #ddd;
+			box-shadow: 0 0 5px rgba(0,0,0,0.1);
+			font-size: 18px;
+			resize: none;
+			width: 400px;
+			height: 150px;
+			margin-bottom: 20px;
+			background-color: #fff;
+			color: #555;
+			font-weight: bold;
+		}
+
+
+      
+footer {
+  color:#ffff00 ;
+  text-align: center  ;
+  position: relative;
+  background-color: #633eb9;
+  }
+
+
+
+
+
+
+/**************************/
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #fff;
+      color: #000;
+      padding: 10px;
     }
   
-    h1 {
-      color: #333;
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
     }
   
-    .button {
+    .mode-toggle {
+      display: flex;
+      align-items: center;
+    }
+  
+    .switch {
+      position: relative;
       display: inline-block;
-      padding: 10px 20px;
-      background-color: #4CAF50;
-      color: #fff;
-      border: none;
-      cursor: pointer;
+      width: 50px;
+      height: 24px;
       margin-right: 10px;
     }
   
-    .button.red {
-      background-color: #FF0000;
+    .switch input { 
+      opacity: 0;
+      width: 0;
+      height: 0;
     }
   
-    .button.green {
-      background-color: #00FF00;
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+      border-radius: 24px;
     }
   
-    textarea {
-      width: 100%;
-      height: 150px;
-      margin-bottom: 10px;
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 4px;
+      bottom: 4px;
+      background-color: #fff;
+      -webkit-transition: .4s;
+      transition: .4s;
+      border-radius: 50%;
     }
   
-    /* Media queries for responsive design */
-    @media (max-width: 767px) {
-      body {
-        padding: 10px;
-      }
-  
-      h1 {
-        font-size: 24px;
-      }
-  
-      .button {
-        font-size: 14px;
-      }
-  
-      textarea {
-        height: 100px;
-      }
+    input:checked + .slider {
+      background-color: #2196F3;
     }
+  
+    input:checked + .slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
+  
+    .slider.round {
+      border-radius: 34px;
+    }
+  
+    .slider.round:before {
+      border-radius: 50%;
+    }
+  
+    .mode-label {
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+
+
+    .dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+p.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color:#ffff00; /* Set the desired text color */
+  text-shadow: #8b16da;
+  align-self: center;
+  margin: 0; /* Remove any default margin */
+}
+
+header {
+  align-items: center;
+  text-align: center;
+  position: relative;
+  background-color: #633eb9;
+  }
+  .icon-container i {
+  margin-right: 10px; /* Add right margin to create space between icons */
+}
+
+
+
+#footer_items {
+  text-align: center;
+  font-size: 14px;
+  color:#ffff00; ;
+  margin-top: 20px;
+}
+
+#footer_items p {
+  margin: 0;
+}
+
+#footer_items a {
+  text-decoration: none;
+  color:#00ffff;
+  outline: none;
+}
+
+#footer_items a:hover {
+  color:#ff9900 ;
+}
+
+
+    
+    /*****************************************************/
+
+/* Default styles */
+
+input[type="text"],
+textarea {
+  width: 10%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+
+
+@media screen and (max-width: 400px) {
+  /* Styles for screen resolution up to 400px */
+  input[type="text"],
+  #output,
+  #locationOutput,
+  #location,
+  #userInput {
+    width: 70%;
+    font-size: 14px;
+  }
+
+  textarea {
+    width: 100%;
+    height: 100px;
+    font-size: 14px;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  footer {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  /* Styles for screen resolution up to 600px */
+  input[type="text"],
+  #output,
+  #locationOutput,
+  #location,
+  #userInput {
+    width: 70%;
+    font-size: 14px;
+  }
+
+  textarea {
+    width: 100%;
+    height: 100px;
+    font-size: 14px;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  footer {
+    font-size: 12px;
+  }
+}
+
+
+
+
+
   </style>
 </head>
 <body>
+	<header>
+		<h1> home</h1>
+		<header>
   <h1>Website with GPS Coordinates and Address Conversion</h1>
 
   <h2>Features</h2>
@@ -88,6 +347,7 @@
 
 <footer>
 	<a href="index.html">home<a>
+</footer>			
   <script>
     // JavaScript functionality can be added here if needed
   </script>
